@@ -6,43 +6,45 @@
 #include <iostream>
 #include <set>
 
+// set 容器排序 存放自定义数据类型
+
+class Person{
+public:
+    Person(std::string name, int age){
+        this->m_Name = name;
+        this->m_Age = age;
+    }
+
+    std::string m_Name;
+    int m_Age;
+
+};
+
 class MyCompare{
 public:
-    bool operator()(int v1, int v2) const {
-    // 两个()不同含义-->第一个代表要重载的符号；第二个代表重载的函数体的参数列表
-        return v1 > v2;
+    bool operator()(const Person& p1, const Person& p2) const {
+        return p1.m_Age < p2.m_Age;
     }
+
 };
 
 
 void test(){
-    std::set<int> s1;
-    s1.insert(10);
-    s1.insert(40);
-    s1.insert(20);
-    s1.insert(50);
-    s1.insert(30);
+    std::set<Person, MyCompare> s;
+    
+    Person p1("刘备", 24);
+    Person p2("关羽", 28);
+    Person p3("张飞", 25);
+    Person p4("孙权", 21);
+    
+    s.insert(p1);
+    s.insert(p2);
+    s.insert(p3);
+    s.insert(p4);
 
-    for(std::set<int>::iterator it = s1.begin(); it != s1.end(); it++){
-        std::cout << *it << " ";
+    for(std::set<Person, MyCompare>::iterator it = s.begin(); it != s.end(); it++){
+        std::cout << "姓名: " << it->m_Name << " 年龄: " << it->m_Age << std::endl;
     }
-    std::cout << std::endl;
-
-    // 指定排序规则为降序
-    std::set<int, MyCompare> s2;  // 在插入数据前声明排序规则
-
-    s2.insert(10);
-    s2.insert(40);
-    s2.insert(20);
-    s2.insert(50);
-    s2.insert(30);
-
-    // 遍历时类型要统一
-    for(std::set<int, MyCompare>::iterator it = s2.begin(); it != s2.end(); it++){
-        std::cout << *it << " ";
-    }
-    std::cout << std::endl;
-
 }
 
 int main(){
