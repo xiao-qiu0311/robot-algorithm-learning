@@ -24,4 +24,3 @@ ros2/         ROS2 C++ learning demos
 slam/         SLAM algorithm implementations
 navigation/   Robot navigation algorithms
 projects/     Complete robotics projects
-notes/        Learning notes and summaries

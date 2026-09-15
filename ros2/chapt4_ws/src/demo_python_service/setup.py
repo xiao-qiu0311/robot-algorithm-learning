@@ -11,6 +11,7 @@ setup(
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
         ('share/' + package_name+"/resource", ['resource/default.jpg']), # 将照片拷贝到install
+        ('share/' + package_name+"/resource", ['resource/test.jpg']), # 将照片拷贝到install
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -25,7 +26,9 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            'learni_face_detect=demo_python_service.learn_face_detect:main',
+            'learn_face_detect=demo_python_service.learn_face_detect:main',
+            'face_detect_node=demo_python_service.face_detect_node:main',
+            'face_detect_client_node=demo_python_service.face_detect_client_node:main',
         ],
     },
 )

@@ -16,13 +16,25 @@
 #include <algorithm>
 #include <functional>
 
+// negate 一元仿函数 取反仿函数
 void test1(){
-    
+    std::negate<int> n;
+
+    int res = n(50);
+
+    std::cout << res << std::endl;
 
 }
 
+// plus 二元仿函数 加法
+void test2(){
+    std::plus<int> p;
+    std::cout << p(10, 20) << std::endl;
+    // 二元仿函数用法与plus类似
+}
+
 int main(){
-    test1();
+    test2();
 
     return 0;
 }
