@@ -1,0 +1,1 @@
+/home/qiu/Desktop/robot-algorithm-learning/ros2/chapt4_ws/build/face_interfaces/rosidl_cmake/srv/Partol_Response.msg

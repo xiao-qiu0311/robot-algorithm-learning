@@ -1,0 +1,1 @@
+/home/qiu/Desktop/robot-algorithm-learning/ros2/chapt4_ws/build/face_interfaces/rosidl_generator_cpp/face_interfaces/srv/detail/partol__traits.hpp

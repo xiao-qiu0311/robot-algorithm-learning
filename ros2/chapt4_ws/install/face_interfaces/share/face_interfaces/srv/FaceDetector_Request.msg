@@ -1,1 +1,1 @@
-sensor_msgs/Image image
+/home/qiu/Desktop/robot-algorithm-learning/ros2/chapt4_ws/build/face_interfaces/rosidl_cmake/srv/FaceDetector_Request.msg

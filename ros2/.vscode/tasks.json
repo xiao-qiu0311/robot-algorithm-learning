@@ -10,7 +10,7 @@
       "command": "bash",
       "args": [
         "-lc",
-        "source /opt/ros/humble/setup.bash && colcon build --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON && python3 merge_compile_commands.py"
+        "source /opt/ros/humble/setup.bash && colcon build --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON && ros2-merge-compile-commands"
       ],
       "group": {
         "kind": "build",
@@ -31,7 +31,7 @@
       "command": "bash",
       "args": [
         "-lc",
-        "source /opt/ros/humble/setup.bash && colcon build --symlink-install --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON && python3 merge_compile_commands.py"
+        "source /opt/ros/humble/setup.bash && colcon build --symlink-install --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON && ros2-merge-compile-commands"
       ],
       "group": "build",
       "problemMatcher": [

@@ -1,1 +1,1 @@
-face_interfaces
+/home/qiu/Desktop/robot-algorithm-learning/ros2/chapt4_ws/build/face_interfaces/ament_cmake_python/face_interfaces/face_interfaces.egg-info/top_level.txt

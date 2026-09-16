@@ -1,4 +1,1 @@
-# generated from rosidl_cmake/cmake/rosidl_cmake-extras.cmake.in
-
-set(face_interfaces_IDL_FILES "srv/FaceDetector.idl")
-set(face_interfaces_INTERFACE_FILES "srv/FaceDetector.srv;srv/FaceDetector_Request.msg;srv/FaceDetector_Response.msg")
+/home/qiu/Desktop/robot-algorithm-learning/ros2/chapt4_ws/build/face_interfaces/rosidl_cmake/rosidl_cmake-extras.cmake
