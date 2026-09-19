@@ -167,3 +167,6 @@ CompileFlags:
 Diagnostics:
   UnusedIncludes: None
   MissingIncludes: None
+
+Completion:
+  HeaderInsertion: Never
