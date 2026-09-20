@@ -18,7 +18,7 @@ int main(int argc, char* argv[]){
 
     // change
     *i_p_2 = 30; // two pointers pointing a same value, change one of them, the other changes too.
-    cout << "i_p_1: " << *i_p_1 << endl;
+    cout << "i_p_1: " << *i_p_1 << endl; 
     cout << "i_p_2: " << *i_p_2 << endl;
 
     // if change i_p_2 to nullptr, i_p_1 won't change

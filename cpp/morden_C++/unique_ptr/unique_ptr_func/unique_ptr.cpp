@@ -14,7 +14,7 @@ void do_with_cat_pass_ref(const std::unique_ptr<Cat> &c){
     c->cat_info(); 
     // c.reset(); 
 }
-
+    
 // 链式函数
 std::unique_ptr<Cat> get_unique_ptr(){
     std::unique_ptr<Cat> p_dog = std::make_unique<Cat>("Locaal cat");

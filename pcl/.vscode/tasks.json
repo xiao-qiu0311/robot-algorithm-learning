@@ -1,0 +1,21 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build active PCL file",
+      "type": "shell",
+      "command": "g++ -std=c++17 -g ${file} -o ${fileDirname}/${fileBasenameNoExtension} $(pkg-config --cflags --libs pcl_common-1.12 pcl_io-1.12 pcl_visualization-1.12)",
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "detail": "使用 pkg-config 链接 PCL 1.12 编译当前 C++ 文件"
+    }
+  ]
+}
