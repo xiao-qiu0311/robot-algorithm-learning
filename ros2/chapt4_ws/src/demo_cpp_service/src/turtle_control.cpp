@@ -1,4 +1,5 @@
 #include "geometry_msgs/msg/detail/twist__struct.hpp"
+#include "rcl_interfaces/msg/set_parameters_result.hpp"
 #include "geometry_msgs/msg/twist.hpp"
 #include "rclcpp/executors.hpp"
 #include "rclcpp/node.hpp"
@@ -15,10 +16,33 @@
 #include <memory>
 
 using Partol = face_interfaces::srv::Partol;
+using SetParametersResult = rcl_interfaces::msg::SetParametersResult;
 
 class TurtleController : public rclcpp::Node{
 public:
     TurtleController() : Node("turtle_controller"){
+        this->declare_parameter("k", 1.0);
+        this->declare_parameter("max_speed", 1.0);
+        this->get_parameter("k", k_);
+        this->get_parameter("max_speed", max_speed_);
+        this->set_parameter(rclcpp::Parameter("k", 2.0));
+
+        parameter_callback_handle_ = this->add_on_set_parameters_callback(
+            [&](const std::vector<rclcpp::Parameter>& Parameters)->rcl_interfaces::msg::SetParametersResult{
+                rcl_interfaces::msg::SetParametersResult result;
+                result.successful = true;
+                for(const auto & parameter : Parameters){
+                    RCLCPP_INFO(this->get_logger(), "更新参数的值%s=%f", parameter.get_name().c_str(), parameter.as_double());
+                    if(parameter.get_name() == "k"){
+                        k_ = parameter.as_double();
+                    }
+                    if(parameter.get_name() == "max_speed"){
+                        max_speed_ = parameter.as_double();
+                    }
+                }
+                return result;
+            }
+            );
         velocity_publisher_ = this->create_publisher<geometry_msgs::msg::Twist>(
             "/turtle1/cmd_vel", 10);
         pose_subscription_ = this->create_subscription<turtlesim::msg::Pose>(
@@ -37,6 +61,8 @@ public:
             } else {
                 response->result = Partol::Response::FAIL;
             }
+            // 额外调用添加的回调函数，从而第一时间更新参数
+
         });
     }
 
@@ -92,6 +118,7 @@ private:
     rclcpp::Service<Partol>::SharedPtr partol_service_;
     rclcpp::Subscription<turtlesim::msg::Pose>::SharedPtr pose_subscription_;
     rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr velocity_publisher_;
+    OnSetParametersCallbackHandle::SharedPtr parameter_callback_handle_;
     static constexpr double kWorldSize{11.0};  // turtlesim 坐标范围 0~11
     double boundary_margin_{1.5};              // 距边界小于该值即掉头
     double target_x_{1.0};    // 目标位置X，默认值1.0
