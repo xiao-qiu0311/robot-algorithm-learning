@@ -14,7 +14,7 @@ def generate_launch_description():
         name='model', default_value=str(default_urdf_path), description='加载的模型文件路径'
     )
     # 通过文件路径获取内容并转换成参数对象，以供传入 robot_state_publisher
-    substitutions_command_result = launch.substitutions.Command(['cat ', launch.substitutions.LaunchConfiguration('model')])
+    substitutions_command_result = launch.substitutions.Command(['xacro ', launch.substitutions.LaunchConfiguration('model')])
     robot_description_value = launch_ros.parameter_descriptions.ParameterValue(
         substitutions_command_result, value_type=str
     )
